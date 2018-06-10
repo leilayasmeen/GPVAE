@@ -74,7 +74,7 @@ tf.set_random_seed(args.seed)
 # initialize data loaders for train/test splits
 if args.data_set == 'imagenet' and args.class_conditional:
     raise("We currently don't have labels for the small imagenet data set")
-DataLoader = {'cifar':cifar10_data.DataLoader, 'imagenet':imagenet_data.DataLoader}[args.data_set]
+DataLoader = {'cifar':cifar10_data.DataLoader}[args.data_set]
 train_data = DataLoader(args.data_dir, 'train', args.batch_size * args.nr_gpu, rng=rng, shuffle=True, return_labels=args.class_conditional)
 test_data = DataLoader(args.data_dir, 'test', args.batch_size * args.nr_gpu, shuffle=False, return_labels=args.class_conditional)
 obs_shape = train_data.get_observation_size() # e.g. a tuple (32,32,3)

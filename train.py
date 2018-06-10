@@ -25,8 +25,6 @@ import scipy.misc
 import pixel_cnn_pp.nn as nn
 from pixel_cnn_pp.model import model_spec, model_spec_encoder
 import data.cifar10_data as cifar10_data
-import data.imagenet_data as imagenet_data
-
 
 # -----------------------------------------------------------------------------
 parser = argparse.ArgumentParser()

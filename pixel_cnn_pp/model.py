@@ -68,7 +68,7 @@ def model_spec(x, h=None, init=False, ema=None, dropout_p=0.5, nr_resnet=5, nr_f
             ul = ul_list.pop()
             for rep in range(nr_resnet):
                 u = nn.gated_resnet(u, u_list.pop(), conv=nn.down_shifted_conv2d)
-                ul = nn.gated_resnet(ul, tf.concat(axis=3, values=[u, ul_list.pop()]), conv=nn.down_right_shifted_conv2d)
+                ul = nn.gated_resnet(ul, tf.concat(values=[u, ul_list.pop()], axis=3), conv=nn.down_right_shifted_conv2d)
 
             u = nn.down_shifted_deconv2d(u, num_filters=nr_filters, stride=[2, 2])
             ul = nn.down_right_shifted_deconv2d(ul, num_filters=nr_filters, stride=[2, 2])
